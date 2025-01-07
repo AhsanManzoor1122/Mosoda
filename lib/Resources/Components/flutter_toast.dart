@@ -16,8 +16,9 @@ class Utils {
 
   static OverlayEntry? _overlayEntry;
   void showLoadingIndicator(BuildContext context, String message) {
-    if (_overlayEntry != null)
+    if (_overlayEntry != null) {
       return; // Prevent multiple indicators from showing
+    }
 
     _overlayEntry = OverlayEntry(
       builder: (context) => Material(

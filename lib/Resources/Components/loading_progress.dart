@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class LoadingSpinnerWidget extends StatefulWidget {
   const LoadingSpinnerWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<LoadingSpinnerWidget> createState() => _LoadingSpinnerWidgetState();
@@ -44,7 +44,7 @@ class _LoadingSpinnerWidgetState extends State<LoadingSpinnerWidget>
             ),
           ),
           const SizedBox(height: 10),
-          Text("Loading..."),
+          const Text("Loading..."),
         ],
       ),
     );

@@ -125,7 +125,11 @@ class _SubcategoryscreenState extends State<Subcategoryscreen>
                       onTap: () {
                         setState(() {
                           _selectedIndex = index;
-                          Navigator.pushNamed(context, RoutesName.service);
+                          Map<String, dynamic> argument = {
+                            'subCatId': subcategory.id,
+                          };
+                          Navigator.pushNamed(context, RoutesName.service,
+                              arguments: argument);
                         });
                       },
                       child: Opacity(

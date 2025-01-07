@@ -11,11 +11,11 @@ class UserDetail {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
@@ -34,13 +34,13 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     token = json['token'];
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['token'] = token;
-    if (this.user != null) {
+    if (user != null) {
       data['user'] = user!.toJson();
     }
     return data;
@@ -51,7 +51,7 @@ class User {
   int? id;
   String? name;
   String? email;
-  Null? phone;
+  Null phone;
   String? photo;
 
   User({this.id, this.name, this.email, this.phone, this.photo});
@@ -65,7 +65,7 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;

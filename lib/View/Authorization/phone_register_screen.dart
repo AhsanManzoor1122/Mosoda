@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mosoda/Resources/Components/Button.dart';
-import 'package:mosoda/Resources/Components/TextFormField.dart';
+import 'package:mosoda/Resources/Components/button_widget.dart';
+import 'package:mosoda/Resources/Components/text_form_field.dart';
 import 'package:mosoda/Resources/Components/theme_data.dart';
-import 'package:mosoda/View/Authorization/OtpScreen.dart';
+import 'package:mosoda/View/Authorization/otp_screen.dart';
 
 class SignUpPhoneScreen extends StatefulWidget {
   const SignUpPhoneScreen({super.key});
@@ -15,7 +15,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
   var fullNameCont = TextEditingController();
   var passwordCont = TextEditingController();
   var phoneCont = TextEditingController();
-  bool _isObscured = true;
+  //bool _isObscured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                 child: Image.asset("assets/logo.png"),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             // Form fields and next button
@@ -67,7 +67,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ButtonMain(
@@ -77,7 +77,8 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => OTPScreen(varificationId: "kdjf"),
+                      builder: (context) =>
+                          const OTPScreen(varificationId: "kdjf"),
                     ),
                   );
                 },

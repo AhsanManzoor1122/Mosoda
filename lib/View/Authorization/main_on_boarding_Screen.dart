@@ -1,12 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mosoda/Globals.dart';
-import 'package:mosoda/Resources/Components/Button.dart';
-import 'package:mosoda/Resources/Components/Text.dart';
-import 'package:mosoda/Resources/Components/TextFormField.dart';
+import 'package:mosoda/globals.dart';
+import 'package:mosoda/Resources/Components/button_widget.dart';
+import 'package:mosoda/Resources/Components/text.dart';
+import 'package:mosoda/Resources/Components/text_form_field.dart';
 import 'package:mosoda/Resources/Components/theme_data.dart';
 import 'package:mosoda/Utils/Routes/routes_name.dart';
-import 'package:mosoda/View/Authorization/RegisterWithPhone.dart';
-import 'package:mosoda/View/Authorization/SignupByEmail.dart';
+
 import 'package:mosoda/ViewModel/auth_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,9 +45,12 @@ class _MainOnBoardingScreenState extends State<MainOnBoardingScreen> {
     Globals.userPhoto = pref.getString("photo");
     String? userToken = pref.getString("token");
     if (userToken != null && userToken.isNotEmpty) {
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacementNamed(context, RoutesName.dashboardScreen);
     }
-    print("User Token is : " + token!);
+    if (kDebugMode) {
+      print("User Token is : ${token!}");
+    }
   }
 
   @override
@@ -64,7 +67,7 @@ class _MainOnBoardingScreenState extends State<MainOnBoardingScreen> {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: screenWidth,
           //color: Colors.white,
           child: Column(
@@ -126,7 +129,7 @@ class _MainOnBoardingScreenState extends State<MainOnBoardingScreen> {
                       children: [
                         Checkbox(
                           checkColor: AppTheme.fillColor,
-                          fillColor: MaterialStateProperty.all(Colors.white),
+                          fillColor: WidgetStateProperty.all(Colors.white),
                           value: isCheck,
                           onChanged: (bool? value) {
                             setState(() {

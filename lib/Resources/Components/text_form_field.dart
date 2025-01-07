@@ -10,6 +10,7 @@ class TextformfieldWidget extends StatelessWidget {
   final bool obsecure;
 
   const TextformfieldWidget({
+    super.key,
     this.hintText,
     this.labelText,
     required this.textEditingController,
@@ -30,7 +31,7 @@ class TextformfieldWidget extends StatelessWidget {
           right: screenWidth * 0.04,
           top: screenHeight * 0.005,
           bottom: screenHeight * 0.005),
-      child: Container(
+      child: SizedBox(
         width: double.infinity, // Set width here
         height: 60, // Set height here
         child: TextFormField(

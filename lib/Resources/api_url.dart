@@ -1,5 +1,3 @@
-import 'package:mosoda/Globals.dart';
-
 class Apiurl {
   static const baseUrl = "https://mosoda.logic-valley.com/api/";
 
@@ -24,7 +22,7 @@ class Apiurl {
   static const vendorsListingAll = "vendors/listing";
   static const vendorsTimings = 'vendors/timings-by-date';
   static const servicesListing = "services/listing";
-  static const serviceListingBySubCategory = "{$baseUrl}services/listing";
+  static const serviceListingBySubCategory = "${baseUrl}services/listing";
   static const servicesByVendorSubCat = "vendors/services_of_sub_category";
   static const subServicesByVendorService = "vendors/sub_services_of_service";
   static const orders = "user/orders";

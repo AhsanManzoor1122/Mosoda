@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mosoda/Utils/Routes/routes.dart';
 import 'package:mosoda/Utils/Routes/routes_name.dart';
-import 'package:mosoda/View/Authorization/MainOnBoard.dart';
+
 import 'package:mosoda/ViewModel/auth_view_model.dart';
 import 'package:mosoda/ViewModel/cat_view_model.dart';
 import 'package:provider/provider.dart';

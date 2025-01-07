@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mosoda/Resources/Components/Button.dart';
-import 'package:mosoda/Resources/Components/TextFormField.dart';
+import 'package:mosoda/Resources/Components/button_widget.dart';
+import 'package:mosoda/Resources/Components/text_form_field.dart';
 import 'package:mosoda/Resources/Components/theme_data.dart';
 import 'package:mosoda/Utils/Routes/routes_name.dart';
 import 'package:mosoda/ViewModel/auth_view_model.dart';
@@ -17,13 +17,12 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
   var fullNameCont = TextEditingController();
   var emailCont = TextEditingController();
   var passwordCont = TextEditingController();
-  final bool _isObscured = true;
+  //final bool _isObscured = true;
   bool isChecked = false;
   bool? signUp;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     signUp = true;
   }
@@ -100,7 +99,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
 
                     // Sign Up Button
                     Padding(
-                      padding: EdgeInsets.all(2.0),
+                      padding: const EdgeInsets.all(2.0),
                       child: ButtonMain(
                         buttonBorderColor: AppTheme.fillColor,
                         buttonColor: AppTheme.buttonColor,

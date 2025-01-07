@@ -1,5 +1,3 @@
-import 'package:mosoda/View/OtherScreens/Dashboard.dart';
-
 class RoutesName {
   static const String signupScreen = "SignUpEmailScreen";
   static const String mainOnBoardingScreen = "MainOnBoardingScreen";

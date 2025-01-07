@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:mosoda/Data/Network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:mosoda/Data/Response/app_exception.dart';
@@ -28,7 +29,9 @@ class NetworkApiServices extends BaseApiServices {
           .post(Uri.parse(url), body: data, headers: header)
           .timeout(const Duration(seconds: 10));
       jsonResponse = returnResponse(response);
-      print(response.statusCode);
+      if (kDebugMode) {
+        print(response.statusCode);
+      }
     } on SocketException {
       throw FetchDataException("No Internet Connection");
     }
@@ -39,7 +42,9 @@ class NetworkApiServices extends BaseApiServices {
     switch (response.statusCode) {
       case 200:
         dynamic responseJson = jsonDecode(response.body);
-        print("Status Code ${response.statusCode}");
+        if (kDebugMode) {
+          print("Status Code ${response.statusCode}");
+        }
         return responseJson;
       case 404:
         throw BadRequestException(response.body.toString());

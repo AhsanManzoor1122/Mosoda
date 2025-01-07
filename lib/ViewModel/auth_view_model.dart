@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mosoda/Globals.dart';
+import 'package:mosoda/globals.dart';
 import 'package:mosoda/Repository/auth_repository.dart';
 import 'package:mosoda/Utils/Routes/routes_name.dart';
 import 'package:mosoda/Utils/utils.dart';

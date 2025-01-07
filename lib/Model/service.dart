@@ -7,21 +7,21 @@ class Service {
   Service({this.code, this.status, this.data, this.message});
 
   Service.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    status = json['status'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    message = json['message'];
+    code = json['code']?.toString();
+    status = json['status'] as bool?;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    message = json['message']?.toString();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['status'] = this.status;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
+    final Map<String, dynamic> result = <String, dynamic>{};
+    result['code'] = code;
+    result['status'] = status;
+    if (data != null) {
+      result['data'] = data!.toJson();
     }
-    data['message'] = this.message;
-    return data;
+    result['message'] = message;
+    return result;
   }
 }
 
@@ -35,45 +35,50 @@ class Data {
   int? totalCount;
   List<Services>? services;
 
-  Data(
-      {this.catId,
-      this.subCatId,
-      this.title,
-      this.page,
-      this.limit,
-      this.pageCount,
-      this.totalCount,
-      this.services});
+  Data({
+    this.catId,
+    this.subCatId,
+    this.title,
+    this.page,
+    this.limit,
+    this.pageCount,
+    this.totalCount,
+    this.services,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
-    catId = json['cat_id'];
-    subCatId = json['sub_cat_id'];
-    title = json['title'];
-    page = json['page'];
-    limit = json['limit'];
-    pageCount = json['page_count'];
-    totalCount = json['total_count'];
-    if (json['services'] != null) {
-      services = <Services>[];
-      json['services'].forEach((v) {
-        services!.add(new Services.fromJson(v));
-      });
+    catId = json['cat_id']?.toString();
+    subCatId = json['sub_cat_id']?.toString();
+    title = json['title']?.toString();
+    page = json['page']?.toString();
+    limit = json['limit']?.toString();
+    pageCount = json['page_count'] is int
+        ? json['page_count']
+        : int.tryParse(json['page_count']?.toString() ?? '0');
+    totalCount = json['total_count'] is int
+        ? json['total_count']
+        : int.tryParse(json['total_count']?.toString() ?? '0');
+    if (json['services'] != null && json['services'] is List) {
+      services = (json['services'] as List)
+          .map((v) => Services.fromJson(v as Map<String, dynamic>))
+          .toList();
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cat_id'] = this.catId;
-    data['sub_cat_id'] = this.subCatId;
-    data['title'] = this.title;
-    data['page'] = this.page;
-    data['limit'] = this.limit;
-    data['page_count'] = this.pageCount;
-    data['total_count'] = this.totalCount;
-    if (this.services != null) {
-      data['services'] = this.services!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> result = <String, dynamic>{};
+    result['cat_id'] = catId;
+    result['sub_cat_id'] = subCatId;
+    result['title'] = title;
+    result['page'] = page;
+    result['limit'] = limit;
+    result['page_count'] = pageCount;
+    result['total_count'] = totalCount;
+    if (services != null) {
+      result['services'] =
+          services!.map((service) => service.toJson()).toList();
     }
-    return data;
+    return result;
   }
 }
 
@@ -84,7 +89,6 @@ class Services {
   String? description;
   String? arDescription;
   String? image;
-
   String? hasSubServices;
 
   Services({
@@ -98,28 +102,26 @@ class Services {
   });
 
   Services.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    arTitle = json['ar_title'];
-    description = json['description'];
-    arDescription = json['ar_description'];
-    image = json['image'];
-
-    hasSubServices = json['has_sub_services'];
-    if (json['subservices'] != null) {}
+    id = json['id'] is int
+        ? json['id']
+        : int.tryParse(json['id']?.toString() ?? '0');
+    title = json['title']?.toString();
+    arTitle = json['ar_title']?.toString();
+    description = json['description']?.toString();
+    arDescription = json['ar_description']?.toString();
+    image = json['image']?.toString();
+    hasSubServices = json['has_sub_services']?.toString();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['ar_title'] = this.arTitle;
-    data['description'] = this.description;
-    data['ar_description'] = this.arDescription;
-    data['image'] = this.image;
-
-    data['has_sub_services'] = this.hasSubServices;
-
-    return data;
+    final Map<String, dynamic> result = <String, dynamic>{};
+    result['id'] = id;
+    result['title'] = title;
+    result['ar_title'] = arTitle;
+    result['description'] = description;
+    result['ar_description'] = arDescription;
+    result['image'] = image;
+    result['has_sub_services'] = hasSubServices;
+    return result;
   }
 }

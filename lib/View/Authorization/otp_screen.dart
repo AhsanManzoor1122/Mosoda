@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mosoda/Resources/Components/Button.dart';
+import 'package:mosoda/Resources/Components/button_widget.dart';
 import 'package:mosoda/Resources/Components/theme_data.dart';
 
 class OTPScreen extends StatefulWidget {

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mosoda/Utils/Routes/routes_name.dart';
-import 'package:mosoda/View/Authorization/MainOnBoard.dart';
-import 'package:mosoda/View/Authorization/OtpScreen.dart';
-import 'package:mosoda/View/Authorization/RegisterWithPhone.dart';
-import 'package:mosoda/View/Authorization/SignupByEmail.dart';
-import 'package:mosoda/View/OtherScreens/AddLocation.dart';
-import 'package:mosoda/View/OtherScreens/Dashboard.dart';
+import 'package:mosoda/View/Authorization/main_on_boarding_Screen.dart';
+
+import 'package:mosoda/View/Authorization/otp_screen.dart';
+import 'package:mosoda/View/Authorization/phone_register_screen.dart';
+import 'package:mosoda/View/Authorization/signup_email_screen.dart';
+
 import 'package:mosoda/View/OtherScreens/Location.dart';
-import 'package:mosoda/View/OtherScreens/ServiceScreen.dart';
+
 import 'package:mosoda/View/OtherScreens/SubCategory.dart';
+import 'package:mosoda/View/OtherScreens/add_location_screen.dart';
+import 'package:mosoda/View/OtherScreens/dashboard_screen.dart';
+import 'package:mosoda/View/OtherScreens/service_screen.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings setting) {
@@ -43,8 +46,11 @@ class Routes {
         return MaterialPageRoute(
             builder: (BuildContext context) => Subcategoryscreen(catid: catid));
       case RoutesName.service:
+        final argument = setting.arguments as Map<String, dynamic>;
+        final sub_cat_id = argument['subCatId'];
         return MaterialPageRoute(
-            builder: (BuildContext context) => const Servicescreen());
+            builder: (BuildContext context) =>
+                Servicescreen(subCatId: sub_cat_id));
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(

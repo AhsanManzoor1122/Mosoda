@@ -11,11 +11,12 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  static final CameraPosition _kGooglePlex =
+  static const CameraPosition _kGooglePlex =
       CameraPosition(target: LatLng(33.6226256, 72.9880340), zoom: 14.4746);
   List<Marker> marker = [];
   List<Marker> markerlist = [
-    Marker(markerId: MarkerId("1"), position: LatLng(33.6226256, 72.9880340)),
+    const Marker(
+        markerId: MarkerId("1"), position: LatLng(33.6226256, 72.9880340)),
   ];
   final Completer<GoogleMapController> _controller = Completer();
 
@@ -29,7 +30,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Location"),
+        title: const Text("Location"),
       ),
       body: GoogleMap(
         mapType: MapType.normal,

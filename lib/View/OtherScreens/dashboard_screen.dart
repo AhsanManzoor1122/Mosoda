@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:mosoda/Globals.dart';
+import 'package:mosoda/globals.dart';
 import 'package:mosoda/Model/categories.dart';
-import 'package:mosoda/Resources/Components/Button.dart';
+import 'package:mosoda/Resources/Components/button_widget.dart';
 import 'package:mosoda/Resources/Components/theme_data.dart';
 import 'package:mosoda/Utils/Routes/routes_name.dart';
-import 'package:mosoda/View/OtherScreens/Location.dart';
 import 'package:mosoda/ViewModel/cat_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+// ignore: must_be_immutable
 class DashboardScreen extends StatelessWidget {
   var data = {
     "page": "",
   };
+
+  DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class DashboardScreen extends StatelessWidget {
         title: const Text('Dashboard'),
         backgroundColor: Colors.blueAccent,
       ),
-      body: Container(
+      body: SizedBox(
         height: screenHeight,
         width: screenWidth,
         child: Column(
@@ -57,8 +59,7 @@ class DashboardScreen extends StatelessWidget {
                       child: Text("No Data Available"),
                     );
                   } else {
-                    var categories = snapshot.data;
-                    var categoryList = snapshot.data!.data!.categories;
+                    var categoryList = snapshot.data!.data.categories;
                     return Expanded(
                       flex: 7,
                       child: GridView.builder(
@@ -79,10 +80,6 @@ class DashboardScreen extends StatelessWidget {
 
                           return GestureDetector(
                             onTap: () {
-                              final Map<String, dynamic> arguments = {
-                                'catId': categoryList[index].id
-                              };
-
                               Navigator.pushNamed(
                                   context, RoutesName.subCategory,
                                   arguments: {'catId': categoryList[index].id});
@@ -106,7 +103,7 @@ class DashboardScreen extends StatelessWidget {
                                                 color: Colors.blueAccent
                                                     .withOpacity(0.3),
                                                 blurRadius: 10,
-                                                offset: Offset(0, 4),
+                                                offset: const Offset(0, 4),
                                               )
                                             ]
                                           : [],
@@ -167,7 +164,6 @@ class DashboardScreen extends StatelessWidget {
             ButtonMain(
                 buttonBorderColor: AppTheme.fillColor,
                 buttonColor: AppTheme.buttonColor,
-                child: Text("next"),
                 onTap: () async {
                   Globals.userToken = "";
                   SharedPreferences pref =
@@ -175,9 +171,11 @@ class DashboardScreen extends StatelessWidget {
 
                   await pref.setString('token', "");
                   Globals.userToken = "";
+                  // ignore: use_build_context_synchronously
                   Navigator.pushNamed(context, RoutesName.addlocation);
                 },
-                textColor: Colors.white)
+                textColor: Colors.white,
+                child: const Text("next"))
           ],
         ),
       ),

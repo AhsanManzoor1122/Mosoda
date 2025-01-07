@@ -6,9 +6,11 @@ class ButtonMain extends StatefulWidget {
   final Widget child; // Customizable child widget
   final Icon? icon; // Optional icon
   final Color? buttonColor;
+  // ignore: prefer_typing_uninitialized_variables
   final buttonBorderColor;
-  ButtonMain(
-      {required this.child, // Provide any widget as a child (e.g., Text)
+  const ButtonMain(
+      {super.key,
+      required this.child, // Provide any widget as a child (e.g., Text)
 
       required this.onTap,
       required this.textColor,
@@ -17,6 +19,7 @@ class ButtonMain extends StatefulWidget {
       this.buttonBorderColor});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ButtonMainState createState() => _ButtonMainState();
 }
 
@@ -46,7 +49,7 @@ class _ButtonMainState extends State<ButtonMain> {
               BoxShadow(
                 color: Colors.black.withOpacity(0.4),
                 blurRadius: 4,
-                offset: Offset(0, 0),
+                offset: const Offset(0, 0),
               ),
             ],
           ),

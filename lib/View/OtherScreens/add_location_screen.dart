@@ -43,14 +43,17 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 
 class AddLocationScreen extends StatefulWidget {
+  const AddLocationScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _AddLocationScreenState createState() => _AddLocationScreenState();
 }
 
 class _AddLocationScreenState extends State<AddLocationScreen> {
   late GoogleMapController _controller;
   LatLng _currentPosition =
-      LatLng(37.7749, -122.4194); // Default to San Francisco
+      const LatLng(37.7749, -122.4194); // Default to San Francisco
   String _selectedAddress = "Move the map to select a location";
 
   // Update address based on coordinates
@@ -83,7 +86,7 @@ class _AddLocationScreenState extends State<AddLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Select Location"),
+        title: const Text("Select Location"),
       ),
       body: Stack(
         children: [
@@ -101,7 +104,7 @@ class _AddLocationScreenState extends State<AddLocationScreen> {
             onCameraIdle: _onCameraIdle,
           ),
           // Crosshair
-          Center(
+          const Center(
             child: Icon(
               Icons.location_on,
               size: 40,
@@ -123,17 +126,17 @@ class _AddLocationScreenState extends State<AddLocationScreen> {
                     child: Text(
                       _selectedAddress,
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context, _currentPosition);
                   },
-                  child: Text("Select This Location"),
+                  child: const Text("Select This Location"),
                 ),
               ],
             ),
